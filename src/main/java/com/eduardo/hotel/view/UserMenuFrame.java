@@ -4,21 +4,33 @@ import com.eduardo.hotel.model.AuthenticatedUser;
 import com.eduardo.hotel.model.Usuario;
 
 import javax.swing.*;
+import javax.swing.text.html.HTMLDocument;
+import java.awt.*;
+import java.time.LocalDate;
 
 public class UserMenuFrame extends JFrame {
-    private JLabel userLabel;
-    private AuthenticatedUser authenticatedUser;
-    private Usuario usuario;
+    private JButton reservasButton;
+    private JButton buscarButton;
     public UserMenuFrame() {
         setSize(500, 400);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(null);
-        setVisible(true);
 
-        userLabel = new JLabel();
-        userLabel.setText("Bem vindo %s id: %d".formatted(AuthenticatedUser.getUsername(), AuthenticatedUser.getId()));
-        userLabel.setBounds(100, 50, 140, 30);
-        add(userLabel);
+        reservasButton = new JButton("Registros de reservas");
+        reservasButton.setBounds(50, 100, 200, 40);
+        add(reservasButton);
+
+        buscarButton = new JButton("Buscar");
+        buscarButton.setBounds(50, 150, 200, 40);
+        add(buscarButton);
+
+        reservasButton.addActionListener(e -> {
+            EventQueue.invokeLater(() -> {
+                this.dispose();
+                ReservasFrame reservasFrame = new ReservasFrame();
+                reservasFrame.setVisible(true);
+            });
+        });
     }
 }

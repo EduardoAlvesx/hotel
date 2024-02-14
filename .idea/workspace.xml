@@ -4,24 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8e6c1e95-2510-4c50-b9da-a6952db95bfe" name="Changes" comment="new project">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/eduardo/hotel/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/eduardo/hotel/controller/UsuarioController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/eduardo/hotel/dao/UsuarioDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/eduardo/hotel/factory/ConnectionFactory.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/eduardo/hotel/model/AuthenticatedUser.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/eduardo/hotel/model/Usuario.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/eduardo/hotel/view/Login.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/eduardo/hotel/view/MainMenu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/eduardo/hotel/view/UserMenuFrame.java" afterDir="false" />
+    <list default="true" id="8e6c1e95-2510-4c50-b9da-a6952db95bfe" name="Changes" comment="finished AuthenticatedUser">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/eduardo/hotel/controller/ReservaController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/eduardo/hotel/dao/ReservaDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/eduardo/hotel/model/Reserva.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/eduardo/hotel/model/ReservaSession.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/eduardo/hotel/view/HospedesFrame.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/eduardo/hotel/view/ReservasFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/eduardo/hotel/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/eduardo/hotel/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/eduardo/hotel/model/AuthenticatedUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/eduardo/hotel/model/AuthenticatedUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/eduardo/hotel/view/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/eduardo/hotel/view/LoginFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/eduardo/hotel/view/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/eduardo/hotel/view/MainMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/eduardo/hotel/view/UserMenuFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/eduardo/hotel/view/UserMenuFrame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeInsightWorkspaceSettings">
+    <option name="optimizeImportsOnTheFly" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -49,12 +53,15 @@
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.ReservasFrame.executor&quot;: &quot;Run&quot;,
     &quot;Application.Teste.executor&quot;: &quot;Run&quot;,
+    &quot;Application.TesteHash.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Eduar/.m2/repository/com/toedter/jcalendar/1.4/jcalendar-1.4-sources.jar&quot;
   }
 }</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -74,11 +81,31 @@
       <option name="project" value="LOCAL" />
       <updated>1707504857448</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="finished AuthenticatedUser">
+      <option name="closed" value="true" />
+      <created>1707747047165</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1707747047165</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="new project" />
-    <option name="LAST_COMMIT_MESSAGE" value="new project" />
+    <MESSAGE value="finished AuthenticatedUser" />
+    <option name="LAST_COMMIT_MESSAGE" value="finished AuthenticatedUser" />
   </component>
 </project>

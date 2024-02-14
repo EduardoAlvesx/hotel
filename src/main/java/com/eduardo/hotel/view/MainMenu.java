@@ -5,20 +5,21 @@ import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
+
 public class MainMenu extends JFrame {
     private JButton loginButton;
-    private Login login;
+    private LoginFrame loginFrame;
     public MainMenu() {
         //setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(null);
         setSize(500, 400);
         setLocationRelativeTo(null);
 
-        this.loginButton = new JButton("Login");
+        this.loginButton = new JButton("LoginFrame");
         this.loginButton.setBounds(250, 150, 100, 30);
         add(this.loginButton);
 
-        loginFrame();
+        loginButton.addActionListener(e -> login());
 
         addWindowListener(new WindowAdapter() {
             @Override
@@ -39,10 +40,12 @@ public class MainMenu extends JFrame {
         });
 
     }
-    private void loginFrame() {
-        this.loginButton.addActionListener(e -> {
-//            this.dispose();
-//            new Login();
+
+    private void login() {
+        EventQueue.invokeLater(() -> {
+            this.dispose();
+            LoginFrame loginFrame = new LoginFrame();
+            loginFrame.setVisible(true);
         });
     }
 }

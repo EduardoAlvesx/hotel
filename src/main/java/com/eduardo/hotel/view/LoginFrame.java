@@ -6,8 +6,11 @@ import com.eduardo.hotel.model.AuthenticatedUser;
 import com.eduardo.hotel.model.Usuario;
 
 import javax.swing.*;
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
-public class Login extends JFrame {
+public class LoginFrame extends JFrame {
     private JTextField passwordField;
     private JTextField userField;
     private JButton loginButton;
@@ -16,7 +19,7 @@ public class Login extends JFrame {
     private JLabel userLabel;
     private UsuarioController usuarioController;
     private Usuario usuario;
-    public Login() {
+    public LoginFrame() {
         setSize(500, 400);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -38,7 +41,7 @@ public class Login extends JFrame {
         passwordLabel.setBounds(300, 80, 80, 20);
         add(passwordLabel);
 
-        loginButton = new JButton("Login");
+        loginButton = new JButton("LoginFrame");
         loginButton.setBounds(140, 120, 80, 20);
         add(loginButton);
 
@@ -50,6 +53,7 @@ public class Login extends JFrame {
 
         registerButton.addActionListener(e -> register());
         loginButton.addActionListener(e -> login());
+
         setVisible(true);
     }
 
@@ -63,7 +67,7 @@ public class Login extends JFrame {
             var isUserName = usuario.getUserName().equals(userField.getText());
             var isPassword = usuario.getPassword().equals(passwordField.getText());
             if (isUserName && isPassword) {
-                AuthenticatedUser.setUser(usuario);
+                AuthenticatedUser.saveUserSession(usuario);
                 username = usuario.getUserName();
                 password = usuario.getPassword();
             }
@@ -72,7 +76,10 @@ public class Login extends JFrame {
         if (!(username.isEmpty() && password.isEmpty())) {
             JOptionPane.showMessageDialog(null, "Você %s está autenticado".formatted(userField.getText()));
             this.dispose();
-            new UserMenuFrame();
+            EventQueue.invokeLater(() -> {
+                UserMenuFrame userMenuFrame = new UserMenuFrame();
+                userMenuFrame.setVisible(true);
+            });
         }
 
     }
@@ -82,6 +89,9 @@ public class Login extends JFrame {
     private void register() {
         if (userField.getText().isBlank() || passwordField.getText().isBlank()) {
             JOptionPane.showMessageDialog(null, "Os campos não podem estar vazios");
+
+        } else if (usernameExists()) {
+            JOptionPane.showMessageDialog(null, "Nome de usuário já existe escolha um novo");
         } else {
             usuario = new Usuario(userField.getText(), passwordField.getText());
             usuarioController = new UsuarioController();
@@ -93,5 +103,15 @@ public class Login extends JFrame {
         }
     }
 
+    private boolean usernameExists() {
+        usuarioController = new UsuarioController();
+        var all = usuarioController.getAll();
+        List<String> list = new ArrayList<>();
 
+        for (Usuario usuario : all) {
+            list.add(usuario.getUserName());
+        }
+
+        return list.contains(userField.getText());
+    }
 }
