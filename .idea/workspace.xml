@@ -4,19 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8e6c1e95-2510-4c50-b9da-a6952db95bfe" name="Changes" comment="finished AuthenticatedUser">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/eduardo/hotel/controller/ReservaController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/eduardo/hotel/dao/ReservaDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/eduardo/hotel/model/Reserva.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/eduardo/hotel/model/ReservaSession.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/eduardo/hotel/view/HospedesFrame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/eduardo/hotel/view/ReservasFrame.java" afterDir="false" />
+    <list default="true" id="8e6c1e95-2510-4c50-b9da-a6952db95bfe" name="Changes" comment="added buscarFrame">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/eduardo/hotel/controller/HospedeController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/eduardo/hotel/dao/HospedDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/eduardo/hotel/model/Hospede.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/eduardo/hotel/view/BuscasFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/eduardo/hotel/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/eduardo/hotel/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/eduardo/hotel/model/AuthenticatedUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/eduardo/hotel/model/AuthenticatedUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/eduardo/hotel/view/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/eduardo/hotel/view/LoginFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/eduardo/hotel/view/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/eduardo/hotel/view/MainMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/eduardo/hotel/controller/ReservaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/eduardo/hotel/controller/ReservaController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/eduardo/hotel/dao/ReservaDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/eduardo/hotel/dao/ReservaDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/eduardo/hotel/dao/UsuarioDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/eduardo/hotel/dao/UsuarioDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/eduardo/hotel/model/Reserva.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/eduardo/hotel/model/Reserva.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/eduardo/hotel/model/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/eduardo/hotel/model/Usuario.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/eduardo/hotel/view/HospedesFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/eduardo/hotel/view/HospedesFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/eduardo/hotel/view/LoginFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/eduardo/hotel/view/LoginFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/eduardo/hotel/view/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/eduardo/hotel/view/MainMenuFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/eduardo/hotel/view/ReservasFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/eduardo/hotel/view/ReservasFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/eduardo/hotel/view/UserMenuFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/eduardo/hotel/view/UserMenuFrame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -30,12 +33,16 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
@@ -52,6 +59,10 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;Application.BuscasFrame.executor&quot;: &quot;Run&quot;,
+    &quot;Application.HospedDAO.executor&quot;: &quot;Run&quot;,
+    &quot;Application.HospedesFrame.executor&quot;: &quot;Run&quot;,
+    &quot;Application.LoginFrame.executor&quot;: &quot;Run&quot;,
     &quot;Application.Main.executor&quot;: &quot;Run&quot;,
     &quot;Application.ReservasFrame.executor&quot;: &quot;Run&quot;,
     &quot;Application.Teste.executor&quot;: &quot;Run&quot;,
@@ -64,6 +75,13 @@
     &quot;last_opened_file_path&quot;: &quot;C:/Users/Eduar/.m2/repository/com/toedter/jcalendar/1.4/jcalendar-1.4-sources.jar&quot;
   }
 }</component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-21.0.2-openjdk-21.0.2-4caba194b151-4f524021" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -89,7 +107,15 @@
       <option name="project" value="LOCAL" />
       <updated>1707747047165</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="finished ReservasFrame">
+      <option name="closed" value="true" />
+      <created>1707929395350</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1707929395350</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -106,6 +132,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="new project" />
     <MESSAGE value="finished AuthenticatedUser" />
-    <option name="LAST_COMMIT_MESSAGE" value="finished AuthenticatedUser" />
+    <MESSAGE value="finished ReservasFrame" />
+    <MESSAGE value="added buscarFrame" />
+    <option name="LAST_COMMIT_MESSAGE" value="added buscarFrame" />
   </component>
 </project>

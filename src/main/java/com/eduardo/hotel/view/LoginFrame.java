@@ -20,7 +20,7 @@ public class LoginFrame extends JFrame {
     private UsuarioController usuarioController;
     private Usuario usuario;
     public LoginFrame() {
-        setSize(500, 400);
+        setSize(800, 600);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(null);
@@ -33,19 +33,19 @@ public class LoginFrame extends JFrame {
         userField.setBounds(140, 50, 140, 20);
         add(userField);
 
-        userLabel = new JLabel("Usuario");
+        userLabel = new JLabel("USUÁRIO");
         userLabel.setBounds(300, 50, 80, 20);
         add(userLabel);
 
-        passwordLabel = new JLabel("Password");
+        passwordLabel = new JLabel("PASSWORD");
         passwordLabel.setBounds(300, 80, 80, 20);
         add(passwordLabel);
 
-        loginButton = new JButton("LoginFrame");
+        loginButton = new JButton("LOGIN");
         loginButton.setBounds(140, 120, 80, 20);
         add(loginButton);
 
-        registerButton = new JButton("Register");
+        registerButton = new JButton("REGISTER");
         registerButton.setBounds(240, 120, 120, 20);
         add(registerButton);
 
@@ -74,12 +74,14 @@ public class LoginFrame extends JFrame {
         }
 
         if (!(username.isEmpty() && password.isEmpty())) {
-            JOptionPane.showMessageDialog(null, "Você %s está autenticado".formatted(userField.getText()));
+            JOptionPane.showMessageDialog(null, "Usuário %s entrou no sistema".formatted(userField.getText()));
             this.dispose();
             EventQueue.invokeLater(() -> {
                 UserMenuFrame userMenuFrame = new UserMenuFrame();
                 userMenuFrame.setVisible(true);
             });
+        } else {
+            JOptionPane.showMessageDialog(null, "Acesso negado");
         }
 
     }
@@ -113,5 +115,10 @@ public class LoginFrame extends JFrame {
         }
 
         return list.contains(userField.getText());
+    }
+
+    public static void main(String[] args) {
+        LoginFrame loginFrame = new LoginFrame();
+        loginFrame.setVisible(true);
     }
 }

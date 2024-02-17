@@ -17,8 +17,18 @@ public class Reserva {
         this.formaPagamento = formaPagamento;
     }
 
-    public Reserva(String formaPagamento) {
+    public Reserva(BigInteger id, LocalDate dataEntrada, LocalDate dataSaida, Double valor, String formaPagamento) {
+        this.id = id;
+        this.dataEntrada = dataEntrada;
+        this.dataSaida = dataSaida;
+        this.valor = valor;
         this.formaPagamento = formaPagamento;
+    }
+    public Reserva(LocalDate dataEntrada) {
+        if (dataEntrada != null) {
+            this.dataEntrada = dataEntrada;
+        }
+
     }
 
     public BigInteger getId() {

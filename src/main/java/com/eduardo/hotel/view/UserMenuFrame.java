@@ -1,16 +1,10 @@
 package com.eduardo.hotel.view;
 
-import com.eduardo.hotel.model.AuthenticatedUser;
-import com.eduardo.hotel.model.Usuario;
-
 import javax.swing.*;
-import javax.swing.text.html.HTMLDocument;
 import java.awt.*;
-import java.time.LocalDate;
 
 public class UserMenuFrame extends JFrame {
-    private JButton reservasButton;
-    private JButton buscarButton;
+    private JButton reservasButton, buscarButton;
     public UserMenuFrame() {
         setSize(500, 400);
         setLocationRelativeTo(null);
@@ -30,6 +24,14 @@ public class UserMenuFrame extends JFrame {
                 this.dispose();
                 ReservasFrame reservasFrame = new ReservasFrame();
                 reservasFrame.setVisible(true);
+            });
+        });
+
+        buscarButton.addActionListener(e -> {
+            EventQueue.invokeLater(() -> {
+                this.dispose();
+                BuscasFrame buscasFrame = new BuscasFrame();
+                buscasFrame.setVisible(true);
             });
         });
     }

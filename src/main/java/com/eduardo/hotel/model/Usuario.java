@@ -18,9 +18,8 @@ public class Usuario {
     public Usuario() {
 
     }
-    private String hashPassword(String password) {
-        var hash = BCrypt.withDefaults().hashToString(12, password.toCharArray());
-        return hash;
+    public String hashPassword(String password) {
+         return BCrypt.withDefaults().hashToString(12, password.toCharArray());
     }
 
     public String getPassword() {

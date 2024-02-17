@@ -6,10 +6,10 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 
-public class MainMenu extends JFrame {
+public class MainMenuFrame extends JFrame {
     private JButton loginButton;
     private LoginFrame loginFrame;
-    public MainMenu() {
+    public MainMenuFrame() {
         //setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(null);
         setSize(500, 400);

@@ -11,12 +11,10 @@ import java.time.temporal.ChronoUnit;
 import java.util.Objects;
 
 public class ReservasFrame extends JFrame {
-    private JLabel dateInLabel, dateOutLabel, valorReservaLabel;
-    private DatePicker dateInPicker;
-    private DatePicker dateOutPicker;
+    private JLabel dateInLabel, dateOutLabel, valorReservaLabel, formasPagamentoLabel;
+    private DatePicker dateInPicker, dateOutPicker;
     private JTextField valorField;
     private JComboBox<String> pagamentosComboBox;
-    private JLabel formasPagamentoLabel;
     private JButton confirmacaoButton;
     private ReservaController reservaController;
     private Reserva reserva;
@@ -56,7 +54,7 @@ public class ReservasFrame extends JFrame {
         formasPagamentoLabel.setBounds(50, 260, 200, 25);
         add(formasPagamentoLabel);
 
-        String[] formasPagamento = {"Cartão de crédito", "Cartão de débito", "Boleto"};
+        String[] formasPagamento = {"Cartão de crédito", "Cartão de débito", "Boleto", "Pix"};
         pagamentosComboBox = new JComboBox<>(formasPagamento);
         pagamentosComboBox.setBounds(50, 290, 200, 25);
         add(pagamentosComboBox);
@@ -76,8 +74,6 @@ public class ReservasFrame extends JFrame {
             if (dateInPicker.getDate() != null) {
                 valorField.setText(String.valueOf(getValorReserva()));
             }
-
-
         });
 
         confirmacaoButton.addActionListener(e -> {

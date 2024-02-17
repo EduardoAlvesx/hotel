@@ -1,6 +1,5 @@
 package com.eduardo.hotel.dao;
 
-import com.eduardo.hotel.factory.ConnectionFactory;
 import com.eduardo.hotel.model.Usuario;
 
 import java.sql.Connection;
@@ -8,7 +7,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class UsuarioDAO {
@@ -46,4 +44,5 @@ public class UsuarioDAO {
             throw new RuntimeException(e);
         }
     }
+
 }

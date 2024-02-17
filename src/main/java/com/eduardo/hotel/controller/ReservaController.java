@@ -5,6 +5,7 @@ import com.eduardo.hotel.factory.ConnectionFactory;
 import com.eduardo.hotel.model.Reserva;
 
 import java.sql.Connection;
+import java.util.List;
 
 public class ReservaController {
     private ReservaDAO reservaDAO;
@@ -14,5 +15,8 @@ public class ReservaController {
     }
     public void register(Reserva reserva) {
         reservaDAO.register(reserva);
+    }
+    public List<Reserva> getById(String id) {
+        return reservaDAO.getById(id);
     }
 }

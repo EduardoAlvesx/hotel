@@ -3,6 +3,8 @@ package com.eduardo.hotel.dao;
 import com.eduardo.hotel.model.Reserva;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ReservaDAO {
     private Connection connection;
@@ -29,5 +31,33 @@ public class ReservaDAO {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public List<Reserva> getById(String id) {
+        List<Reserva> reservas = new ArrayList<>();
+        var sql = "SELECT * FROM RESERVAS WHERE ID = ?";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setString(1, id);
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                var reservaId = resultSet.getBigDecimal(1);
+                var dataEntrada = resultSet.getDate(2);
+                var dataSaida = resultSet.getDate(3);
+                var valor = resultSet.getDouble(4);
+                var formaPagemento = resultSet.getString(5);
+                Reserva reserva = new Reserva(reservaId.toBigInteger(), dataEntrada.toLocalDate(), dataSaida.toLocalDate(), valor,
+                        formaPagemento);
+                reservas.add(reserva);
+            }
+
+            return reservas;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void update() {
+        
     }
 }
