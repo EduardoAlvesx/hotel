@@ -2,10 +2,10 @@ package com.eduardo.hotel.controller;
 
 import com.eduardo.hotel.dao.UsuarioDAO;
 import com.eduardo.hotel.factory.ConnectionFactory;
+import com.eduardo.hotel.model.UserDetails;
 import com.eduardo.hotel.model.Usuario;
 
 import java.sql.Connection;
-import java.util.List;
 
 public class UsuarioController {
     private UsuarioDAO usuarioDAO;
@@ -17,7 +17,7 @@ public class UsuarioController {
         this.usuarioDAO.register(usuario);
     }
 
-    public List<Usuario> getAll() {
-        return this.usuarioDAO.getAll();
+    public UserDetails getUserByuUsername(String username) {
+        return this.usuarioDAO.getUserByUsername(username);
     }
 }

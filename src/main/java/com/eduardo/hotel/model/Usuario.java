@@ -8,7 +8,7 @@ public class Usuario {
     private String password;
     public Usuario(String userName, String password) {
         this.userName = userName;
-        this.password = password;
+        this.password = hashPassword(password);
     }
     public Usuario(Long id, String userName, String password) {
         this.id = id;

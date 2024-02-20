@@ -3,11 +3,16 @@ package com.eduardo.hotel.view;
 import com.eduardo.hotel.controller.HospedeController;
 import com.eduardo.hotel.controller.ReservaController;
 import com.eduardo.hotel.model.Hospede;
+import com.eduardo.hotel.model.HotelUtil;
 import com.eduardo.hotel.model.Reserva;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.sql.Date;
+import java.time.temporal.ChronoUnit;
 import java.util.List;
 
 public class BuscasFrame extends JFrame {
@@ -95,14 +100,43 @@ public class BuscasFrame extends JFrame {
             clearReservasTable();
             fillReservasTable();
         });
+
+        editarButton.addActionListener(e -> {
+            try {
+                updateTableReservas();
+            } catch (ArrayIndexOutOfBoundsException exception) {
+                JOptionPane.showMessageDialog(null, "Pesquise primeiro");
+            }
+        });
+    }
+
+    private void updateTableReservas() {
+        var itemSelected = reservasModel.getValueAt(reservasTable.getSelectedRow(), reservasTable.getSelectedColumn());
+        if (itemSelected instanceof BigInteger) {
+            var id = new BigDecimal(String.valueOf(itemSelected));
+            var dataEntrada = Date.valueOf(String.valueOf(reservasModel.getValueAt(reservasTable.getSelectedRow(), 1)));
+            var dataSaida = Date.valueOf(String.valueOf(reservasModel.getValueAt(reservasTable.getSelectedRow(), 2)));
+            var val = Double.valueOf(ChronoUnit.DAYS.between(dataEntrada.toLocalDate(), dataSaida.toLocalDate()) * HotelUtil.VALOR.getValorDia());
+            var formaPagamento = (String) reservasModel.getValueAt(reservasTable.getSelectedRow(), 4);
+            reservaController.update(dataEntrada, dataSaida, val, formaPagamento, id);
+            JOptionPane.showMessageDialog(null, "Informações atualizadas com sucesso");
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecione o id");
+        }
+
     }
 
     private void fillReservasTable() {
         var id = buscarField.getText();
         var reservas = getReservasById(id);
         for (Reserva reserva : reservas) {
-            reservasModel.addRow(new Object[]{reserva.getId(), reserva.getDataEntrada(), reserva.getDataSaida(),
-                    reserva.getValor(), reserva.getFormaPagamento()});
+            reservasModel.addRow(new Object[]{
+                    reserva.getId(),
+                    reserva.getDataEntrada(),
+                    reserva.getDataSaida(),
+                    reserva.getValor(),
+                    reserva.getFormaPagamento()
+            });
         }
     }
 
@@ -118,9 +152,16 @@ public class BuscasFrame extends JFrame {
     private void fillHospedesTable() {
         var hospedes = getHospedesBySobrenome();
         for (Hospede hospede : hospedes) {
-            hospedesModel.addRow(new Object[] {hospede.getId(), hospede.getNome(), hospede.getSobrenome(),
-                    hospede.getDataNascimento()
-                    , hospede.getNacionalidade(), hospede.getTelefone(), hospede.getReservaId(), hospede.getUsuarioId()});
+            hospedesModel.addRow(new Object[] {
+                    hospede.getId(),
+                    hospede.getNome(),
+                    hospede.getSobrenome(),
+                    hospede.getDataNascimento(),
+                    hospede.getNacionalidade(),
+                    hospede.getTelefone(),
+                    hospede.getReservaId(),
+                    hospede.getUsuarioId()
+            });
         }
 
     }

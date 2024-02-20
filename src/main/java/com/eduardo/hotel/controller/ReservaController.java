@@ -4,7 +4,9 @@ import com.eduardo.hotel.dao.ReservaDAO;
 import com.eduardo.hotel.factory.ConnectionFactory;
 import com.eduardo.hotel.model.Reserva;
 
+import java.math.BigDecimal;
 import java.sql.Connection;
+import java.sql.Date;
 import java.util.List;
 
 public class ReservaController {
@@ -18,5 +20,8 @@ public class ReservaController {
     }
     public List<Reserva> getById(String id) {
         return reservaDAO.getById(id);
+    }
+    public void update(Date dataEntrada, Date dataSaida, Double valor, String formaPagamento, BigDecimal id) {
+        this.reservaDAO.update(dataEntrada, dataSaida, valor, formaPagamento, id);
     }
 }

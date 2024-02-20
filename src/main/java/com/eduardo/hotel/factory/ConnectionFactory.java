@@ -16,6 +16,7 @@ public class ConnectionFactory {
         comboPooledDataSource.setJdbcUrl(url);
         comboPooledDataSource.setUser(user);
         comboPooledDataSource.setPassword(password);
+        comboPooledDataSource.setAutoCommitOnClose(true);
 
         this.dataSource = comboPooledDataSource;
     }

@@ -1,6 +1,5 @@
 package com.eduardo.hotel.dao;
 
-import com.eduardo.hotel.factory.ConnectionFactory;
 import com.eduardo.hotel.model.Hospede;
 
 import java.math.BigDecimal;
@@ -58,17 +57,6 @@ public class HospedDAO {
             return hospedes;
         } catch (SQLException e) {
             throw new RuntimeException(e);
-        }
-    }
-
-    public static void main(String[] args) {
-        Connection connection1 = new ConnectionFactory().getConnection();
-        HospedDAO hospedDAO = new HospedDAO(connection1);
-        var sobrenome = "Oliveira";
-
-        var list = hospedDAO.getAllBySobrenome(sobrenome);
-        for (Hospede hospede : list) {
-            System.out.println(hospede.getSobrenome());
         }
     }
 }

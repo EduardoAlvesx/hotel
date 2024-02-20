@@ -3,12 +3,11 @@ package com.eduardo.hotel.view;
 import at.favre.lib.crypto.bcrypt.BCrypt;
 import com.eduardo.hotel.controller.UsuarioController;
 import com.eduardo.hotel.model.AuthenticatedUser;
+import com.eduardo.hotel.model.UserDetails;
 import com.eduardo.hotel.model.Usuario;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class LoginFrame extends JFrame {
     private JTextField passwordField;
@@ -49,8 +48,6 @@ public class LoginFrame extends JFrame {
         registerButton.setBounds(240, 120, 120, 20);
         add(registerButton);
 
-
-
         registerButton.addActionListener(e -> register());
         loginButton.addActionListener(e -> login());
 
@@ -59,33 +56,30 @@ public class LoginFrame extends JFrame {
 
     private void login() {
         usuarioController = new UsuarioController();
-        var usuarios = usuarioController.getAll();
-        var username = "";
-        var password = "";
+        var usuario = usuarioController.getUserByuUsername(userField.getText());
+        var userFieldIsblank = userField.getText().isBlank();
+        var passwordFieldIsBlank = passwordField.getText().isBlank();
 
-        for (Usuario usuario : usuarios) {
-            var isUserName = usuario.getUserName().equals(userField.getText());
-            var isPassword = usuario.getPassword().equals(passwordField.getText());
-            if (isUserName && isPassword) {
+        if (userFieldIsblank || passwordFieldIsBlank) {
+            JOptionPane.showMessageDialog(null, "Os campos não podem estar vazios");
+        } else {
+            if (usuario.getUsername() == null || !isVerified(passwordField.getText(), usuario)) {
+                JOptionPane.showMessageDialog(null, "Acesso negado");
+            } else {
+                JOptionPane.showMessageDialog(null, "Usuário %s logado com sucesso".formatted(userField.getText()));
                 AuthenticatedUser.saveUserSession(usuario);
-                username = usuario.getUserName();
-                password = usuario.getPassword();
+                EventQueue.invokeLater(() -> {
+                    dispose();
+                    UserMenuFrame userMenuFrame = new UserMenuFrame();
+                    userMenuFrame.setVisible(true);
+                });
             }
         }
-
-        if (!(username.isEmpty() && password.isEmpty())) {
-            JOptionPane.showMessageDialog(null, "Usuário %s entrou no sistema".formatted(userField.getText()));
-            this.dispose();
-            EventQueue.invokeLater(() -> {
-                UserMenuFrame userMenuFrame = new UserMenuFrame();
-                userMenuFrame.setVisible(true);
-            });
-        } else {
-            JOptionPane.showMessageDialog(null, "Acesso negado");
-        }
-
     }
 
+    private boolean isVerified(String password, UserDetails usuario) {
+        return BCrypt.verifyer().verify(password.toCharArray(), usuario.getPassword()).verified;
+    }
 
 
     private void register() {
@@ -99,22 +93,13 @@ public class LoginFrame extends JFrame {
             usuarioController = new UsuarioController();
             usuarioController.register(usuario);
             JOptionPane.showMessageDialog(null, "Usuario %s cadastrado com sucesso".formatted(usuario.getUserName()));
-            var resu = BCrypt.verifyer().verify(passwordField.getText().toCharArray(),
-                    usuario.getPassword().toCharArray());
-            System.out.println(resu);
         }
     }
 
     private boolean usernameExists() {
         usuarioController = new UsuarioController();
-        var all = usuarioController.getAll();
-        List<String> list = new ArrayList<>();
-
-        for (Usuario usuario : all) {
-            list.add(usuario.getUserName());
-        }
-
-        return list.contains(userField.getText());
+        var usuario = usuarioController.getUserByuUsername(userField.getText());
+        return usuario.getUsername() != null;
     }
 
     public static void main(String[] args) {

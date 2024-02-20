@@ -2,6 +2,7 @@ package com.eduardo.hotel.dao;
 
 import com.eduardo.hotel.model.Reserva;
 
+import java.math.BigDecimal;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -57,7 +58,18 @@ public class ReservaDAO {
         }
     }
 
-    public void update() {
-        
+    public void update(Date dataEntrada, Date dataSaida, Double valor, String formaPagamento, BigDecimal id) {
+        var sql = "UPDATE RESERVAS SET DATA_ENTRADA = ?, DATA_SAIDA = ?, VALOR = ?, FORMA_PAGAMENTO = ? WHERE ID = ?";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setDate(1, dataEntrada);
+            statement.setDate(2, dataSaida);
+            statement.setDouble(3, valor);
+            statement.setString(4, formaPagamento);
+            statement.setBigDecimal(5, id);
+            statement.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
