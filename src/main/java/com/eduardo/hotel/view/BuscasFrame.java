@@ -103,11 +103,34 @@ public class BuscasFrame extends JFrame {
 
         editarButton.addActionListener(e -> {
             try {
-                updateTableReservas();
+                if (pane.getSelectedIndex() == 0) {
+                    updateTableHospedes();
+                } else {
+                    updateTableReservas();
+                }
+
+                System.out.println();
             } catch (ArrayIndexOutOfBoundsException exception) {
-                JOptionPane.showMessageDialog(null, "Pesquise primeiro");
+                JOptionPane.showMessageDialog(null, "Pesquise pelo sobrenome ou id primeiro");
             }
         });
+    }
+
+    private void updateTableHospedes() {
+        var selectedItem = hospedesModel.getValueAt(hospedesTable.getSelectedRow(), hospedesTable.getSelectedColumn());
+        if (selectedItem instanceof BigInteger) {
+            var id = new BigDecimal(String.valueOf(selectedItem));
+            var nome = String.valueOf(hospedesModel.getValueAt(hospedesTable.getSelectedRow(), 1));
+            var sobrenome = String.valueOf(hospedesModel.getValueAt(hospedesTable.getSelectedRow(), 2));
+            var dataNascimento = Date.valueOf(String.valueOf(hospedesModel.getValueAt(hospedesTable.getSelectedRow(), 3)));
+            var nacionalidade = String.valueOf(hospedesModel.getValueAt(hospedesTable.getSelectedRow(), 4));
+            var telefone = String.valueOf(hospedesModel.getValueAt(hospedesTable.getSelectedRow(), 5));
+
+            hospedeController.update(id, nome, sobrenome, dataNascimento, nacionalidade, telefone);
+            JOptionPane.showMessageDialog(null, "Informações atualizadas com sucesso");
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecione o id");
+        }
     }
 
     private void updateTableReservas() {
@@ -125,6 +148,7 @@ public class BuscasFrame extends JFrame {
         }
 
     }
+
 
     private void fillReservasTable() {
         var id = buscarField.getText();

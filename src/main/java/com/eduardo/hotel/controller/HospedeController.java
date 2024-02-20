@@ -4,7 +4,9 @@ import com.eduardo.hotel.dao.HospedDAO;
 import com.eduardo.hotel.factory.ConnectionFactory;
 import com.eduardo.hotel.model.Hospede;
 
+import java.math.BigDecimal;
 import java.sql.Connection;
+import java.sql.Date;
 import java.util.List;
 
 public class HospedeController {
@@ -19,5 +21,9 @@ public class HospedeController {
 
     public List<Hospede> getAllBySobrenome(String sobrenome) {
         return hospedDAO.getAllBySobrenome(sobrenome);
+    }
+
+    public void update(BigDecimal id, String nome, String sobrenome, Date dataNascimentom, String nacionalidade, String telefore) {
+        this.hospedDAO.update(id, nome, sobrenome, dataNascimentom, nacionalidade, telefore);
     }
 }

@@ -59,4 +59,21 @@ public class HospedDAO {
             throw new RuntimeException(e);
         }
     }
+
+    public void update(BigDecimal id, String nome, String sobrenome, Date dataNascimento, String nacionalidade, String telefone) {
+        var sql = "UPDATE HOSPEDES SET NOME = ?, SOBRENOME = ?, DATA_NASCIMENTO = ?, NACIONALIDADE = ?, TELEFONE = ? " +
+                "WHERE ID = ?";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setString(1, nome);
+            statement.setString(2, sobrenome);
+            statement.setDate(3, dataNascimento);
+            statement.setString(4, nacionalidade);
+            statement.setString(5, telefone);
+            statement.setBigDecimal(6, id);
+            statement.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
