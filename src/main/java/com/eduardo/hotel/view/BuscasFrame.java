@@ -92,13 +92,13 @@ public class BuscasFrame extends JFrame {
         buscarField.setToolTipText("Pesquise usando sobrenome ou número da reserva");
 
         buscarButton.addActionListener(e -> {
-            clearHospedesTable();
-            fillHospedesTable();
-        });
-
-        buscarButton.addActionListener(e -> {
-            clearReservasTable();
-            fillReservasTable();
+            if (pane.getSelectedIndex() == 0) {
+                clearHospedesTable();
+                fillHospedesTable();
+            } else {
+                clearReservasTable();
+                fillReservasTable();
+            }
         });
 
         editarButton.addActionListener(e -> {
@@ -108,16 +108,40 @@ public class BuscasFrame extends JFrame {
                 } else {
                     updateTableReservas();
                 }
-
-                System.out.println();
             } catch (ArrayIndexOutOfBoundsException exception) {
                 JOptionPane.showMessageDialog(null, "Pesquise pelo sobrenome ou id primeiro");
             }
         });
+
+        deletarButton.addActionListener(e -> {
+            try {
+                if (pane.getModel().getSelectedIndex() == 0) {
+
+                } else {
+                    deleteReservas();
+                }
+            } catch (ArrayIndexOutOfBoundsException exception) {
+                JOptionPane.showMessageDialog(null, "Pesquise primeiro para deletar");
+            }
+        });
+    }
+
+    private Object getHospedesValueAt() {
+        return hospedesModel.getValueAt(hospedesTable.getSelectedRow(), hospedesTable.getSelectedColumn());
+    }
+
+    private void deleteReservas() {
+        var id = reservasModel.getValueAt(reservasTable.getSelectedRow(), reservasTable.getSelectedColumn());
+        if (id instanceof BigInteger) {
+            reservaController.delete((BigInteger) id);
+            JOptionPane.showMessageDialog(null, "Sua reserva número: %d foi deletado com sucesso".formatted(id));
+        } else {
+            JOptionPane.showMessageDialog(null, "Selecione o número da reserva para deletar a reserva");
+        }
     }
 
     private void updateTableHospedes() {
-        var selectedItem = hospedesModel.getValueAt(hospedesTable.getSelectedRow(), hospedesTable.getSelectedColumn());
+        var selectedItem = getHospedesValueAt();
         if (selectedItem instanceof BigInteger) {
             var id = new BigDecimal(String.valueOf(selectedItem));
             var nome = String.valueOf(hospedesModel.getValueAt(hospedesTable.getSelectedRow(), 1));
@@ -129,7 +153,7 @@ public class BuscasFrame extends JFrame {
             hospedeController.update(id, nome, sobrenome, dataNascimento, nacionalidade, telefone);
             JOptionPane.showMessageDialog(null, "Informações atualizadas com sucesso");
         } else {
-            JOptionPane.showMessageDialog(null, "Selecione o id");
+            JOptionPane.showMessageDialog(null, "Selecione o id e editar para concluir");
         }
     }
 
@@ -144,11 +168,10 @@ public class BuscasFrame extends JFrame {
             reservaController.update(dataEntrada, dataSaida, val, formaPagamento, id);
             JOptionPane.showMessageDialog(null, "Informações atualizadas com sucesso");
         } else {
-            JOptionPane.showMessageDialog(null, "Selecione o id");
+            JOptionPane.showMessageDialog(null, "Selecione o id e editar para concluir");
         }
 
     }
-
 
     private void fillReservasTable() {
         var id = buscarField.getText();

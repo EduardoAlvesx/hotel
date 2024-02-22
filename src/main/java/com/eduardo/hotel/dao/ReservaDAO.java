@@ -3,6 +3,7 @@ package com.eduardo.hotel.dao;
 import com.eduardo.hotel.model.Reserva;
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -66,6 +67,17 @@ public class ReservaDAO {
             statement.setDouble(3, valor);
             statement.setString(4, formaPagamento);
             statement.setBigDecimal(5, id);
+            statement.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void delete(BigInteger id) {
+        var sql = "DELETE FROM RESERVAS WHERE ID = ?";
+        try (PreparedStatement statement = connection.prepareStatement(sql)) {
+            statement.setBigDecimal(1, new BigDecimal(id));
             statement.executeUpdate();
 
         } catch (SQLException e) {

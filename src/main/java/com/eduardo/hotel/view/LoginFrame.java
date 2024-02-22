@@ -10,12 +10,9 @@ import javax.swing.*;
 import java.awt.*;
 
 public class LoginFrame extends JFrame {
-    private JTextField passwordField;
-    private JTextField userField;
-    private JButton loginButton;
-    private JButton registerButton;
-    private JLabel passwordLabel;
-    private JLabel userLabel;
+    private JTextField passwordField, userField;
+    private JButton loginButton, registerButton;
+    private JLabel passwordLabel, userLabel;
     private UsuarioController usuarioController;
     private Usuario usuario;
     public LoginFrame() {
