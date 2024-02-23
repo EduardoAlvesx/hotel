@@ -79,6 +79,7 @@ public class ReservaDAO {
         try (PreparedStatement statement = connection.prepareStatement(sql)) {
             statement.setBigDecimal(1, new BigDecimal(id));
             statement.executeUpdate();
+            statement.executeUpdate();
 
         } catch (SQLException e) {
             throw new RuntimeException(e);

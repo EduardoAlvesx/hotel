@@ -3,6 +3,7 @@ package com.eduardo.hotel.dao;
 import com.eduardo.hotel.model.Hospede;
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -70,6 +71,17 @@ public class HospedDAO {
             statement.setString(4, nacionalidade);
             statement.setString(5, telefone);
             statement.setBigDecimal(6, id);
+            statement.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void delete(BigInteger id) {
+        var sql = "DELETE FROM HOSPEDES WHERE ID = ?";
+        try (PreparedStatement statement = connection.prepareStatement(sql)){
+            statement.setBigDecimal(1, new BigDecimal(id));
             statement.executeUpdate();
 
         } catch (SQLException e) {

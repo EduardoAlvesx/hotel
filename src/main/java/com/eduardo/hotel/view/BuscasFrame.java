@@ -116,7 +116,7 @@ public class BuscasFrame extends JFrame {
         deletarButton.addActionListener(e -> {
             try {
                 if (pane.getModel().getSelectedIndex() == 0) {
-
+                    deleteHospedes();
                 } else {
                     deleteReservas();
                 }
@@ -126,18 +126,33 @@ public class BuscasFrame extends JFrame {
         });
     }
 
-    private Object getHospedesValueAt() {
-        return hospedesModel.getValueAt(hospedesTable.getSelectedRow(), hospedesTable.getSelectedColumn());
+    private void deleteHospedes() {
+        var id = getHospedesValueAt();
+        if (hospedesTable.getSelectedColumn() == 0) {
+            hospedeController.delete((BigInteger) id);
+            JOptionPane.showMessageDialog(null, "Item deletado com sucesso");
+        } else {
+            JOptionPane.showMessageDialog(null, "Delete clicando no número do hóspede");
+        }
     }
 
+
+
     private void deleteReservas() {
-        var id = reservasModel.getValueAt(reservasTable.getSelectedRow(), reservasTable.getSelectedColumn());
+        var id = getReservasValueAt();
         if (id instanceof BigInteger) {
             reservaController.delete((BigInteger) id);
             JOptionPane.showMessageDialog(null, "Sua reserva número: %d foi deletado com sucesso".formatted(id));
         } else {
             JOptionPane.showMessageDialog(null, "Selecione o número da reserva para deletar a reserva");
         }
+    }
+    private Object getHospedesValueAt() {
+        return hospedesModel.getValueAt(hospedesTable.getSelectedRow(), hospedesTable.getSelectedColumn());
+    }
+
+    private Object getReservasValueAt() {
+        return reservasModel.getValueAt(reservasTable.getSelectedRow(), reservasTable.getSelectedColumn());
     }
 
     private void updateTableHospedes() {
@@ -158,7 +173,7 @@ public class BuscasFrame extends JFrame {
     }
 
     private void updateTableReservas() {
-        var itemSelected = reservasModel.getValueAt(reservasTable.getSelectedRow(), reservasTable.getSelectedColumn());
+        var itemSelected = getReservasValueAt();
         if (itemSelected instanceof BigInteger) {
             var id = new BigDecimal(String.valueOf(itemSelected));
             var dataEntrada = Date.valueOf(String.valueOf(reservasModel.getValueAt(reservasTable.getSelectedRow(), 1)));
