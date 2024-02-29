@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8e6c1e95-2510-4c50-b9da-a6952db95bfe" name="Changes" comment="added delete reservas">
+    <list default="true" id="8e6c1e95-2510-4c50-b9da-a6952db95bfe" name="Changes" comment="added delete hospedes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/eduardo/hotel/controller/HospedeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/eduardo/hotel/controller/HospedeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/eduardo/hotel/dao/HospedDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/eduardo/hotel/dao/HospedDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/eduardo/hotel/dao/ReservaDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/eduardo/hotel/dao/ReservaDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/eduardo/hotel/view/BuscasFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/eduardo/hotel/view/BuscasFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/eduardo/hotel/view/LoginFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/eduardo/hotel/view/LoginFrame.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -142,7 +140,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708576127038</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="added delete hospedes">
+      <option name="closed" value="true" />
+      <created>1708651071969</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1708651071969</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -164,6 +170,7 @@
     <MESSAGE value="added update reservas" />
     <MESSAGE value="added update hospedes" />
     <MESSAGE value="added delete reservas" />
-    <option name="LAST_COMMIT_MESSAGE" value="added delete reservas" />
+    <MESSAGE value="added delete hospedes" />
+    <option name="LAST_COMMIT_MESSAGE" value="added delete hospedes" />
   </component>
 </project>

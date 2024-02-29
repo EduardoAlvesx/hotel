@@ -22,27 +22,32 @@ public class LoginFrame extends JFrame {
         setLayout(null);
 
         passwordField = new JTextField();
-        passwordField.setBounds(140, 80, 140, 20);
+        passwordField.setBounds(280, 180, 140, 25);
         add(passwordField);
 
         userField = new JTextField();
-        userField.setBounds(140, 50, 140, 20);
+        userField.setBounds(280, 150, 140, 25);
+        userField.setFont(new Font("Roboto", Font.PLAIN, 16));
         add(userField);
 
         userLabel = new JLabel("USUÁRIO");
-        userLabel.setBounds(300, 50, 80, 20);
+        userLabel.setBounds(440, 150, 80, 20);
+        userLabel.setFont(new Font("Roboto", Font.PLAIN, 16));
         add(userLabel);
 
         passwordLabel = new JLabel("PASSWORD");
-        passwordLabel.setBounds(300, 80, 80, 20);
+        passwordLabel.setBounds(440, 180, 120, 20);
+        passwordLabel.setFont(new Font("Roboto", Font.PLAIN, 16));
         add(passwordLabel);
 
         loginButton = new JButton("LOGIN");
-        loginButton.setBounds(140, 120, 80, 20);
+        loginButton.setBounds(280, 220, 120, 25);
+        loginButton.setFont(new Font("Roboto", Font.PLAIN, 16));
         add(loginButton);
 
         registerButton = new JButton("REGISTER");
-        registerButton.setBounds(240, 120, 120, 20);
+        registerButton.setBounds(420, 220, 120, 25);
+        registerButton.setFont(new Font("Roboto", Font.PLAIN, 16));
         add(registerButton);
 
         registerButton.addActionListener(e -> register());

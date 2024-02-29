@@ -48,6 +48,7 @@ public class BuscasFrame extends JFrame {
 
         buscarButton = new JButton("BUSCAR");
         buscarButton.setBounds(600, 100, 150, 30);
+        buscarField.setToolTipText("Pesquise usando sobrenome ou número da reserva");
         add(buscarButton);
 
         pane = new JTabbedPane(JTabbedPane.TOP);
@@ -89,10 +90,8 @@ public class BuscasFrame extends JFrame {
         deletarButton.setBounds(640, 520, 100, 30);
         contentPanel.add(deletarButton);
 
-        buscarField.setToolTipText("Pesquise usando sobrenome ou número da reserva");
-
         buscarButton.addActionListener(e -> {
-            if (pane.getSelectedIndex() == 0) {
+            if (isSelectedModel(0)) {
                 clearHospedesTable();
                 fillHospedesTable();
             } else {
@@ -103,7 +102,7 @@ public class BuscasFrame extends JFrame {
 
         editarButton.addActionListener(e -> {
             try {
-                if (pane.getSelectedIndex() == 0) {
+                if (isSelectedModel(0)) {
                     updateTableHospedes();
                 } else {
                     updateTableReservas();
@@ -115,7 +114,7 @@ public class BuscasFrame extends JFrame {
 
         deletarButton.addActionListener(e -> {
             try {
-                if (pane.getModel().getSelectedIndex() == 0) {
+                if (isSelectedModel(0)) {
                     deleteHospedes();
                 } else {
                     deleteReservas();
@@ -126,6 +125,11 @@ public class BuscasFrame extends JFrame {
         });
     }
 
+    private boolean isSelectedModel(int index) {
+        return pane.getSelectedIndex() == index;
+    }
+
+
     private void deleteHospedes() {
         var id = getHospedesValueAt();
         if (hospedesTable.getSelectedColumn() == 0) {
@@ -135,8 +139,6 @@ public class BuscasFrame extends JFrame {
             JOptionPane.showMessageDialog(null, "Delete clicando no número do hóspede");
         }
     }
-
-
 
     private void deleteReservas() {
         var id = getReservasValueAt();
